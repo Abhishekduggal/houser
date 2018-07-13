@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 // import Dashboard from "./Component/Dashboard/Dashboard";
 // import Wizard from "./Component/Wizard/Wizard";
-import House from "./Component/House/House";
+//import House from "./Component/House/House";
 import Header from "./Component/Header/Header";
 import route from "./route";
 
@@ -15,7 +15,7 @@ class App extends Component {
           <Header />
         </header>
         {route}
-        <House />
+        {/* <House /> */}
       </div>
     );
   }
