@@ -1,0 +1,1 @@
+ALTER TABLE  houses ADD index INTEGER; 

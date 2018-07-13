@@ -2,12 +2,12 @@ import React from "react";
 //import Dashboard from "../Dashboard/Dashboard";
 
 const House = props => {
-  console.log(props);
+  // console.log(props);
   let { id, name, address, city, state, zip, img, mortgage, rent } = props.item;
 
   return (
     <div>
-      <div>House</div>;
+      {/* <div>House</div> */}
       {name}
       {address}
       {city}
