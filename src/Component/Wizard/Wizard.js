@@ -15,45 +15,20 @@ class Wizard extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      name: "",
-      address: "",
-      city: "",
-      state: "",
-      zip: 0
-    };
-    // this.updateNameInput = this.updateNameInput.bind(this);
-    // this.updateAddressInput = this.updateAddressInput.bind(this);
-    // this.updateCityInput = this.updateCityInput.bind(this);
-    // this.updateStateInput = this.updateStateInput.bind(this);
-    // this.updateZipInput = this.updateZipInput.bind(this);
+    // this.state = {
+    //   name: "",
+    //   address: "",
+    //   city: "",
+    //   state: "",
+    //   zip: 0
+    // };
     this.handleClickAddHouse = this.handleClickAddHouse.bind(this);
     this.createHouse = this.createHouse.bind(this);
   }
 
-  //   updateNameInput(name) {
-  //     this.setState({ name: name });
-  //   }
-
-  //   updateAddressInput(address) {
-  //     this.setState({ address: address });
-  //   }
-
-  //   updateCityInput(city) {
-  //     this.setState({ city: city });
-  //   }
-
-  //   updateStateInput(state) {
-  //     this.setState({ state: state });
-  //   }
-
-  //   updateZipInput(zip) {
-  //     this.setState({ zip: zip });
-  //   }
-
   createHouse(name, address, city, state, zip) {
     axios.post("/api/create", { name, address, city, state, zip }).then(res => {
-      console.log(res.data);
+      //   console.log(res.data);
       // this.setState({ : res.data });
     });
   }
@@ -62,18 +37,11 @@ class Wizard extends Component {
     //console.log(this.props);
     let { name, address, city, state, zip } = this.props;
     this.createHouse(name, address, city, state, zip);
-    // this.setstate = {
-    //   name: "",
-    //   address: "",
-    //   city: "",
-    //   state: "",
-    //   zip: 0
-    // };
   }
 
   render() {
     // let { name, address, city, state, zip } = this.state;
-    console.log(this.props);
+    // console.log(this.props);
     return (
       <section>
         <div>Wizard</div>
@@ -108,11 +76,16 @@ class Wizard extends Component {
           //   value={zip}
           onChange={e => this.props.updateZipInput(e.target.value)}
         />
-        <Link to={`/`}>
+        {/* <Link to={`/`}>
           <button className="Add_House" onClick={this.handleClickAddHouse}>
             Submit
           </button>
+        </Link> */}
+        <div>Hit the next Button to continue with the Wizard</div>
+        <Link to={`/wizard/step2`}>
+          <button className="Next_Button">Next Step</button>
         </Link>
+
         <Link to={`/`}>
           <button className="Cancel_Button">Cancel Wizard</button>
         </Link>
@@ -120,16 +93,18 @@ class Wizard extends Component {
     );
   }
 }
+
+const mapDispatchToProps = {
+  updateNameInput,
+  updateAddressInput,
+  updateCityInput,
+  updateStateInput,
+  updateZipInput
+};
 function mapStateToProps(state) {
   return state;
 }
 export default connect(
   mapStateToProps,
-  {
-    updateNameInput,
-    updateAddressInput,
-    updateCityInput,
-    updateStateInput,
-    updateZipInput
-  }
+  mapDispatchToProps
 )(Wizard);
