@@ -8,10 +8,10 @@ const read = (req, res, next) => {
 };
 
 const create = (req, res, next) => {
-  //   console.log(req.body);
-  let { name, address, city, state, zip } = req.body;
+  console.log(req.body);
+  let { name, address, city, state, zip, img, mortgage, rent } = req.body;
   const db = req.app.get("db");
-  db.Create_House([name, address, city, state, zip])
+  db.Create_House([name, address, city, state, zip, img, mortgage, rent])
     .then(response => {
       res.status(200).send(response);
     })
