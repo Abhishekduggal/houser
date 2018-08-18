@@ -23,7 +23,7 @@ function reducer(state = initialState, action) {
   //   console.log(action);
   switch (action.type) {
     case UPDATE_NAME_INPUT:
-      return Object.assign({}, { name: action.payload });
+      return Object.assign({ ...state }, { name: action.payload });
 
     case UPDATE_ADDRESS_INPUT:
       return {
